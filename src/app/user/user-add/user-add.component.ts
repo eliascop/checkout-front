@@ -11,7 +11,7 @@ import { UserService } from '../../service/user.service';
 })
 export class UserAddComponent implements OnInit {
 
-  user: User = new User();
+  private user: User = new User();
   submitted = false;
 
   constructor(private userService: UserService, private router: Router) { }
@@ -24,7 +24,7 @@ export class UserAddComponent implements OnInit {
   }
 
   save() {
-    this.userService.addUser(this.user).subscribe(data => console.log(data), error => console.log(error));
+    this.userService.addUser(this.user).subscribe(data => console.log(data),error => console.log(error));
     this.user = new User();
     this.gotoList();
   }

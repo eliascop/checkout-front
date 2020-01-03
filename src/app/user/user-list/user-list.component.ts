@@ -34,7 +34,11 @@ export class UserListComponent implements OnInit {
         error => console.log(error));
   }
 
-  userDetails(id: string){
-    this.router.navigate(['details', id]);
+  updateUser(id: string){
+    this.router.navigate(['user-update', id])
+  }
+
+  userDetail(id: string){
+    this.router.navigate(['user-detail', id]);
   }
 }

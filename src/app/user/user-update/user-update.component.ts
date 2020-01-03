@@ -11,8 +11,8 @@ import { UserService } from '../../service/user.service';
 })
 export class UserUpdateComponent implements OnInit {
 
-  id: string;
-  user: User;
+  private id: string;
+  private user: User;
 
   constructor(private route: ActivatedRoute,private router: Router, private userService: UserService) { }
 
