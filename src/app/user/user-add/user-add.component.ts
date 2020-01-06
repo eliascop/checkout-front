@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { User } from '../../model/user.model';
 import { UserService } from '../../service/user.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-user-add',
@@ -12,25 +13,28 @@ import { UserService } from '../../service/user.service';
 export class UserAddComponent implements OnInit {
 
   private user: User = new User();
+  errorMessage: string;
   submitted = false;
 
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {}
 
-  newUser(): void {
-    this.submitted = false;
-    this.user = new User();
-  }
-
   save() {
-    this.userService.addUser(this.user).subscribe(data => console.log(data),error => console.log(error));
-    this.user = new User();
-    this.gotoList();
+    this.userService.addUser(this.user)
+      .subscribe(
+        data => {
+          console.log(data)
+          this.submitted = true;
+          this.user = new User();
+        },
+        error => {
+          this.errorMessage = error.error
+        }
+      );
   }
 
   onSubmit() {
-    this.submitted = true;
     this.save();    
   }
 

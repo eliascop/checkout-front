@@ -3,9 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Item } from '../model/item.model';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ItemService {
 
   private _url = 'http://localhost:8080/api/item/';

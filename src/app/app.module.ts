@@ -17,6 +17,9 @@ import { UpdateItemComponent } from './item/update-item/update-item.component';
 
 import { ItemService } from './service/item.service'
 import { UserService } from './service/user.service';
+import { CartComponent } from './cart/cart/cart.component';
+import { CartViewComponent } from './cart/cart-view/cart-view.component';
+import { CartResumeComponent } from './cart/cart-resume/cart-resume.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { UserService } from './service/user.service';
     AddItemComponent,
     UpdateItemComponent,
     ItemDetailComponent,
-    ListItemComponent
+    ListItemComponent,
+    CartComponent,
+    CartViewComponent,
+    CartResumeComponent
   ],
   imports: [
     BrowserModule,

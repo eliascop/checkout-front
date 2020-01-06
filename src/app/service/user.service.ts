@@ -3,9 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../model/user.model';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class UserService {
 
   private _url = 'http://localhost:8080/api/user/';
@@ -31,5 +29,4 @@ export class UserService {
   deleteUser(id: string): Observable<any> {
     return this.http.delete(`${this._url+id}`, { responseType: 'text' });
   }
-
 }

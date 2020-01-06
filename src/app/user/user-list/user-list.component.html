@@ -24,5 +24,8 @@
           </tr>
         </tbody>
       </table>
+      <div [hidden]="!submitted">
+        <p style="color:seagreen">The user {{userName}} was removed</p>
+      </div>
     </div>
   </div>

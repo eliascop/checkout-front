@@ -13,10 +13,12 @@ import { User } from "../../model/user.model";
 export class UserListComponent implements OnInit {
 
   private users: Observable<User[]>;
+  submitted = false;
 
   constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit() {
+    this.submitted = false;
     this.reloadData();
   }
 
@@ -26,12 +28,14 @@ export class UserListComponent implements OnInit {
 
   deleteUser(id: string) {
     this.userService.deleteUser(id)
-      .subscribe(
-        data => {
-          console.log(data);
-          this.reloadData();
+    .subscribe(
+      data => {
+        console.log(data);
+        this.reloadData();
+        this.submitted = true;
         },
-        error => console.log(error));
+        error => alert("An error had ocorred")
+      );
   }
 
   updateUser(id: string){

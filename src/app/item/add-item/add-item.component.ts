@@ -12,25 +12,28 @@ import { ItemService } from '../../service/item.service';
 export class AddItemComponent implements OnInit {
 
   private item: Item = new Item();
+  errorMessage:string;
   submitted = false;
 
   constructor(private itemService: ItemService, private router: Router) { }
 
   ngOnInit() {}
 
-  newUser(): void {
-    this.submitted = false;
-    this.item = new Item();
-  }
-
   save() {
-    this.itemService.addItem(this.item).subscribe(data => console.log(data),error => console.log(error));
-    this.item = new Item();
-    this.gotoList();
-  }
+    this.itemService.addItem(this.item)
+      .subscribe(
+        data => {
+          console.log(data)
+          this.submitted = true;
+          this.item = new Item();
+        },
+        error => {
+          this.errorMessage = error.error
+        }
+      );
+  }  
 
   onSubmit() {
-    this.submitted = true;
     this.save();    
   }
 
